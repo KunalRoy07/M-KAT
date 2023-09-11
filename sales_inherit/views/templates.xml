@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+
+<!--        <template id="assets_backend" name="odoo"  inherit_id="web.assets_backend">-->
+<!--            <xpath expr="." position="inside">-->
+<!--                <script type="text/javascript" src="sales_inherit/static/src/js/sales_js/sales_website.js">-->
+<!--                </script>-->
+<!--            </xpath>-->
+
+<!--        </template>-->
+
+    </data>
+</odoo>

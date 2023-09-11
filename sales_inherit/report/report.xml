@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="web_external_layout">
+
+        <div class="header">
+            <div class="container">
+                <html>
+                <head>
+                    <style>
+                        a {
+                        color: white;
+                        }
+                        b {
+                        color:black;
+                        }
+                        .div1 {
+                        position: relative;
+                        width: 350px;
+                        height: 110px;
+                        padding: 50px 20px 10px 40px;
+                        font-size: 45px;
+                        position: relative;
+                        color: #FFF;
+                        background:  #c0c0c0;
+                        float:left;
+                        }
+                        .div1:after {
+                        content: " ";
+                        position: absolute;
+                        display: inline-block;
+                        width: 150px;
+                        height:110px;
+                        top: 0;
+                        z-index: -1;
+                        background:  #c0c0c0;
+                        transform-origin: bottom left;
+                        -ms-transform: skew(20deg);
+                        -webkit-transform: skew(20deg);
+                        transform: skew(20deg);
+                        float:left;
+                        }
+                         .div3 {
+                        position: relative;
+                        width: 300px;
+                        height: 170px;
+                        padding: 5px 10px 10px 50px;
+                        position: relative;
+                        color: #FFF;
+                        background: #fd7e14;
+                        float:left;
+                        }
+                         .div3:after {
+                        content: " ";
+                        position: absolute;
+                        display: inline-block;
+                        width: 330px;
+                        height:170px;
+                        top: 0;
+                        z-index: -1;
+                        background: #fd7e14;
+                        transform-origin: bottom left;
+                        -ms-transform: skew(-30deg);
+                        -webkit-transform: skew(-30deg);
+                        transform: skew(-30deg);
+                        }
+
+                    </style>
+                </head>
+                </html>
+                <div class="div1">
+                    <a href="#">QUOTATION</a>
+                </div>
+
+                <div class="div2">
+                    <img src='sales_inherit/static/description/icon.png' style=" float:right; "
+                         height="125"
+                         width="160"/>
+                </div>
+                <div class="div3" >
+                    <b href="#">
+                        <h5>Quotation to:</h5>
+                        <h5>Gemini Furniture</h5>
+                        <h6>317 Fairchild Dr</h6>
+                        <h6>Fairfield CA 94535</h6>
+                        <h6>United States</h6>
+                        <h6>+1 312 349 2324</h6>
+                    </b>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="article o_report_layout_standard">
+            <t t-out="0"/>
+        </div>
+        <div class="footer o_standard_footer">
+<!--            <div>-->
+<!--                <h5>YourCompany</h5>-->
+<!--                <h6>250 Executive Park Blvd, Suite 3400 , 94134 , San Francisco , United States</h6>-->
+<!--            </div>-->
+            <html>
+                <head>
+                    <style>
+                        c {
+                        color:black;
+                        }
+                         .div5 {
+                        position: relative;
+                        width:350px;
+                        height: 80px;
+                        padding: 10px 5px 10px 30px;
+                        position: relative;
+                        background: grey;
+                        float:left;
+                        margin: 30px 0px;
+
+                        }
+                        .div5:after {
+                        content: " ";
+                        position: absolute;
+                        display: inline-block;
+                        width: 370px;
+                        height:80px;
+                        top:0;
+                        z-index: -1;
+                        background:grey;
+                        transform-origin: bottom left;
+                        -ms-transform: skew(-30deg);
+                        -webkit-transform: skew(-30deg);
+                        transform: skew(-30deg);
+                        }
+
+                        .div6 {
+                        width: 350px;
+                        height: 110px;
+                        padding: 40px 10px 10px 50px;
+                        background: #fd7e14;
+                        float:right;
+                        }
+                        .div7 {
+                        width: 120px;
+                        height: 110px;
+                        background: #fd7e14 ;
+                        margin:0px 0px 0px 400px;
+                        -ms-transform: skew(-30deg);
+                        -webkit-transform: skew(-30deg);
+                        transform: skew(-30deg);
+                        }
+                    </style>
+                </head>
+            </html>
+            <div class="div4">
+
+                <div class="div5">
+                    <c href="#">
+                        <p>
+                            <br>+1 (650) 555-0111 , info@yourcompany.com</br>
+                        </p>
+                    </c>
+                </div>
+
+                <div class="div6">
+                    <c href="#">
+                        <p>
+                            <br>http://www.example.com</br>
+                        </p>
+                    </c>
+                </div>
+                <div class="div7">
+                </div>
+
+            </div>
+        </div>
+    </template>
+
+    <template id="report_saleorder_inherit">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="sales_inherit.web_external_layout" >
+                    <div class="page">
+                        <div class="oe_structure"/>
+
+                        <div>
+                            <br><br>
+                            <div class="col" style="display: inline;float:right">
+                                <div class="row" >
+                                    <span>Date:</span>
+                                    <span t-field="doc.date_order"/>
+                                </div>
+                                <div class="row" >
+                                    <span>Expiration:</span>
+                                    <span t-field="doc.validity_date"/>
+                                </div>
+                                <div class="row" >
+                                    <span>Validity:</span>
+                                    <span t-field="doc.validity_time"/>
+                                    <span>yrs.</span>
+                                </div>
+                                <div class="row">
+                                    <span>Quotation no:</span>
+                                    <span t-field="doc.name"/>
+                                </div>
+                            </div></br></br>
+
+<!--                            <div class="row" style="display: inline;float-right">-->
+<!--                                <span>Date:</span>-->
+<!--                                <span t-field="doc.date_order"/>-->
+<!--                            </div>-->
+<!--                            <div class="row" style="display: inline;float-right">-->
+<!--                                <span>Expiration:</span>-->
+<!--                                <span t-field="doc.validity_date"/>-->
+<!--                            </div>-->
+<!--                            <div class="row" style="display: inline;float-right">-->
+<!--                                <span>Validity:</span>-->
+<!--                                <span t-field="doc.validity_time"/>-->
+<!--                                <span>yrs.</span>-->
+<!--                            </div>-->
+<!--                            <div class="row" style="display: inline;float-right">-->
+<!--                                <span>Quotation no:</span>-->
+<!--                                <span t-field="doc.name"/>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+
+<!--                    </div>-->
+
+<!--                     Is there a discount on at least one line? -->
+                    <t t-set="lines_to_report" t-value="doc._get_order_lines_to_report()"/>
+                    <t t-set="display_discount" t-value="any(l.discount for l in lines_to_report)"/>
+                    <html>
+                        <head>
+                            <style>
+                                table {
+                                font-family: arial, sans-serif;
+                                border-collapse: collapse;
+                                width: 100%;
+                                }
+
+                                th, td {
+                                padding: 10px;
+                                text-align: left;
+                                border-left: 1px solid white;
+                                border-right: 1px solid white;
+                                border-top: 1px solid #dddddd;
+                                border-bottom: 1px solid #dddddd;
+                                }
+
+                            </style>
+                        </head>
+                        <body>
+                            <table>
+                                <tbody>
+                                    <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                                    <tr>
+                                        <th name="th_description" class="text-start">Description</th>
+                                        <th name="th_quantity" class="text-end">Quantity</th>
+                                        <th name="th_priceunit" class="text-end">Unit Price</th>
+                                        <th name="th_discount" t-if="display_discount" class="text-end"
+                                            groups="product.group_discount_per_so_line">
+                                            <span>Disc.%</span>
+                                        </th>
+                                        <th name="th_taxes" class="text-end">Taxes</th>
+                                        <th name="th_expiration_date" class="text-end">Expiration</th>
+                                        <th name="th_subtotal" class="text-end">
+                                            <span groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
+                                            <span groups="account.group_show_line_subtotals_tax_included">Total Price
+                                            </span>
+                                        </th>
+                                    </tr>
+
+                                    <t t-set="current_subtotal" t-value="0"/>
+                                    <t t-foreach="lines_to_report" t-as="line">
+                                        <!--                                    <tbody>-->
+                                        <tr>
+                                            <td name="td_name">
+                                                <span t-field="line.name"/>
+                                            </td>
+                                            <td name="td_quantity" class="text-end">
+                                                <span t-field="line.product_uom_qty"/>
+                                                <span t-field="line.product_uom"/>
+                                            </td>
+                                            <td name="td_priceunit" class="text-end">
+                                                <span t-field="line.price_unit"/>
+                                            </td>
+                                            <td t-if="display_discount" class="text-end"
+                                                groups="product.group_discount_per_so_line">
+                                                <span t-field="line.discount"/>
+                                            </td>
+                                            <td name="td_taxes" class="text-end">
+                                                <span t-out="', '.join(map(lambda x: (x.description or x.name), line.tax_id))"/>
+                                            </td>
+                                            <td name="td_expiration_date" class="text-end">
+                                                <span t-field="line.expiration_date"/>
+                                            </td>
+                                            <td t-if="not line.is_downpayment" name="td_subtotal"
+                                                class="text-end o_price_total">
+                                                <span t-field="line.price_subtotal"
+                                                      groups="account.group_show_line_subtotals_tax_excluded"/>
+                                                <span t-field="line.price_total"
+                                                      groups="account.group_show_line_subtotals_tax_included"/>
+                                            </td>
+
+                                        </tr>
+                                        <!--                                    </tbody>-->
+                                    </t>
+                                </tbody>
+                            </table>
+                        </body>
+                    </html>
+
+                    <div class="clearfix" name="so_total_summary">
+                        <div id="total" class="row" name="total">
+                            <div t-attf-class="#{'col-3' if report_type != 'html' else 'col-sm-3 col-md-6'} ms-auto">
+                                <table class="table table-sm table-borderless">
+                                    <!-- Tax totals -->
+                                    <t t-set="tax_totals" t-value="doc.tax_totals"/>
+                                    <t t-call="account.document_tax_totals"/>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <html>
+                        <body>
+                           <p><h5 style="color:grey;">Thank you for your business</h5></p>
+                            <p>
+                                <br><h2>Payment Info:</h2></br>
+                            </p>
+
+                            <br>
+                                <span>
+                                    <b>Account No:</b>
+                                </span>
+                                <span>03220200002128</span>
+                            </br>
+                            <br>
+                                <b>Ac Name:</b>
+                            </br>
+                            <br>
+                                <span>
+                                    <b>Bank Name:</b>
+                                </span>
+                                <span>Bank of Baroda</span>
+                            </br>
+                            <br>
+                                <span>
+                                    <b>BankDetails:</b>
+                                </span>
+                                <span>NEFT/RTGS BARBOBHADRA</span>
+                            </br>
+
+                            <p>
+                                <br>
+                                    <h3>Terms and Conditions</h3>
+                                </br>
+                            </p>
+
+                            <br>Prices are ex.Godown Ahmedabad and all other charges are extra.</br>
+                            <br>Frieght Insurance transportation extra at actual.</br>
+                            <br>100% Advance along with the Order.Warranty One Year against all Manufacturing
+                                Defects.
+                            </br>
+                            <br>Order confirmed can not be canceled.</br>
+
+                            <p>
+                                <br>
+                                    <b>YourCompany</b>
+                                </br>
+                            </p>
+                            <h>250 Executive Park Blvd, Suite 3400 , 94134 , San Francisco , United States</h>
+
+                        </body>
+                    </html>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+
+
+
+
+   <record id="report_saleorder" model="ir.actions.report">
+        <field name="name">Quotation / M-KAT</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sales_inherit.report_saleorder_inherit</field>
+        <field name="report_file">sales_inherit.report_saleorder_inherit</field>
+        <field name="print_report_name">(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+
+</odoo>

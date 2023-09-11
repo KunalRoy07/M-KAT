@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    <data>-->
+
+
+    <record id="test_menu" model="website.menu">
+        <field name="name">Quotation</field>
+        <field name="url">/quotation</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">80</field>
+    </record>
+
+
+    <template id="tmp_sales_data_id" name="quotation">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    <center>
+                        <h3>Sales Orders</h3>
+                    </center>
+                    <br/>
+
+                    <table class="table-striped table" id="myTable">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="container my-2">
+                                    <div class="form-group">
+                                        <label for="start_date">Start Date:</label>
+                                        <input type="date" id="start_date" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container my-2">
+                                    <div class="form-group">
+                                        <label for="end_date">End Date:</label>
+                                        <input type="date" id="end_date" class="form-control"/>
+                                        <p id="demo1" style=" color:red; display:none; ">Please fill start date
+                                            first!
+                                        </p>
+                                        <p id="demo2" style=" color:red; display:none; ">End date cannot be earlier than
+                                            the start date!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="container my-2 p-3">
+                                    <button type="button" class="btn btn-primary" id="filter_button">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <thead>
+                            <tr>
+                                <h6>
+                                    <b>
+                                        <th>Number</th>
+                                        <th>Creation Date</th>
+                                        <th>Customer</th>
+                                        <th>Salesperson</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Invoice Status</th>
+                                        <th>Payment Status</th>
+                                    </b>
+                                </h6>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="records" t-as="order">
+                                <tr>
+                                    <td>
+                                        <p t-esc="order.name"/>
+                                    </td>
+                                    <td>
+                                        <p t-esc="order.date_order"/>
+                                    </td>
+                                    <td>
+                                        <p t-esc="order.partner_id.name"/>
+                                    </td>
+                                    <td>
+                                        <p t-esc="order.user_id.name"/>
+                                    </td>
+                                    <td>
+                                        <p t-esc="order.amount_total"/>
+                                    </td>
+                                    <td>
+                                        <p t-esc="order.state"/>
+                                    </td>
+                                    <td>
+                                        <p t-esc="order.invoice_status"/>
+                                    </td>
+                                    <td>
+                                        <p t-esc="order.invoice_ids.payment_state"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--    </data>-->
+</odoo>

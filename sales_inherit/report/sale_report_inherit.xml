@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_report_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//table/thead/tr/th[6]" position="after">
+            <th name="th_expiration_date" class="text-end">Expiration</th>
+        </xpath>
+        <xpath expr="//tbody/t[2]/tr/t/td[6]" position="after">
+            <td name="td_expiration_date" class="text-end">
+                <span t-field="line.expiration_date"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>
